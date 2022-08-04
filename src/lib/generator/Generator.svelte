@@ -4,6 +4,7 @@
     let name = 'Dominik Schwind';
     let course = 'React for Beginners';
     let date = '03.08.2022';
+    let signature = 'Martin Schneider';
 
     function createPdf() {
         let certificate = document.querySelector('.certificate');
@@ -31,7 +32,9 @@
             <p>{date}</p>
 
             <div class="signature">
-                <img src="signature.png">
+                <span class="signature__fancy">{signature}</span>
+
+                {signature}
             </div>
         </footer>
 
@@ -44,33 +47,47 @@
         </div>
 
         <div>
-            <label for="headline">Subheadline</label>
-            <input type="text" id="headline" name="headline" bind:value={subheadline}>
+            <label for="subheadline">Subheadline</label>
+            <input type="text" id="subheadline" name="subheadline" bind:value={subheadline}>
         </div>
 
         <div>
-            <label for="headline">Name</label>
-            <input type="text" id="headline" name="headline" bind:value={name}>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" bind:value={name}>
         </div>
 
         <div>
-            <label for="headline">Course</label>
-            <input type="text" id="headline" name="headline" bind:value={course}>
+            <label for="course">Course</label>
+            <input type="text" id="course" name="course" bind:value={course}>
         </div>
 
         <div>
-            <label for="headline">Date</label>
-            <input type="text" id="headline" name="headline" bind:value={date}>
+            <label for="date">Date</label>
+            <input type="text" id="date" name="date" bind:value={date}>
+        </div>
+
+        <div>
+            <label for="signature">Signature</label>
+            <input type="text" id="signature" name="signature" bind:value={signature}>
         </div>
 
         <button on:click={createPdf} type="button">
-            PDF
+            Generate PDF
         </button>
     </form>
 
 </div>
 
 <style>
+    @font-face {
+    font-family: 'Square Peg';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+        url('../fonts/square-peg-v2-latin-regular.woff2') format('woff2'),
+        url('../fonts/square-peg-v2-latin-regular.woff') format('woff');
+    }
+
     .generator {
         display: grid;
         grid-template-columns: 66% 33%;
@@ -98,5 +115,22 @@
         margin-top: 10rem;
         justify-content: space-between;
         width: 90%;
+    }
+
+    .signature {
+        text-align: center;
+    }
+
+    .signature__fancy {
+        font-family: 'Square Peg';
+        font-size: 2rem;
+        display: block;
+        padding: 0 2rem;
+        border-bottom: 1px solid black;
+        margin-bottom: 0.5rem;
+    }
+
+    form > * + * {
+        margin-top: 1rem;
     }
 </style>
